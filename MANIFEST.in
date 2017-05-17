@@ -1,0 +1,4 @@
+graft 4diggit/templates
+graft 4diggit/static
+
+include 4diggit/schema.sql
