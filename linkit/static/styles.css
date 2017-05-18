@@ -1,0 +1,37 @@
+.page {
+	width: 800px;
+	margin: 0 auto;
+}
+
+.post * {
+	margin: 2px;
+}
+
+.post {
+	margin-bottom: 10px;
+	border-bottom: 1px solid #aaa;
+}
+
+.post > .postInfo {
+	width: 100%;
+	height: 50px;
+}
+
+.post > .postInfo > .linkTitle {
+	display: inline;
+}
+
+.post > .postInfo > span.domain {
+	background-color: #aaa;
+	padding: 5px;
+	position: relative;
+	bottom: 4px;
+	display: inline;
+	font-size: 11px;
+}
+
+.post > .postContents {
+	background-color: #eee;
+	border-radius: 3px;
+	border: 1px solid: #ddd;
+}

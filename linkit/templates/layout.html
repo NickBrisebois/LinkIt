@@ -1,13 +1,14 @@
 <!doctype html>
 
 <head>
-	<title>4diggit boiyz</title>
-	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<title>Linkit Park</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='marx.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
 <body>
 	<div class="page">
-		<h1>4diggit</h1>
+		<h1>Linkit Park</h1>
 		{% for message in get_flashed_messages() %}
 
 		<div class="flash">{{ message }}</div>

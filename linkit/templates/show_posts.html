@@ -5,17 +5,36 @@
 		<dl>
 			<dt>Title:
 			<dd><input type="text" size="30" name="title">
+			<dt>Link (not required):
+			<dd><input type="text" name="link">
 			<dt>Text
 			<dd><textarea type="text" name='text' rows="5" cols="40"></textarea>
 			<dd><input type="submit" value="Post">
 		</dl>
 	</form>
 
-	<ul class="entries">
+	<hr />
+
 	{% for post in posts%}
-	<li><h2> {{ post.title }}</h2>{{ post.postContents|safe }} </li>
+	<div class="post">
+		<div class="postInfo">
+			{% if post.postLink is none %}
+
+			<h2> {{ post.title }}</h2>
+
+			{% else %}
+
+			<h2 class="linkTitle">
+				<a href="{{post.postLink}}">{{ post.title }}</a> 
+			</h2>
+			<span class="domain"> {{post.postLink}} </span>
+
+			{% endif %}
+		</div>
+		<p class="postContents">{{ post.postContents|safe }} </p>
+	</div>
 	{% else %}
-	<li><em> no posts bebe </em></li>
+
+	<em> no posts bebe </em>
 	{% endfor %}
-	</ul>
 {% endblock %}

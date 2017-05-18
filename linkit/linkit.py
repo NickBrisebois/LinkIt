@@ -1,6 +1,7 @@
 import os
 import sqlite3
 import datetime
+import uuid
 
 from flask import Flask, request, session, g, redirect, url_for, abort,\
     render_template, flash
@@ -60,7 +61,8 @@ def close_db(error):
 @app.route('/')
 def show_posts():
     db = get_db()
-    cur = db.execute('select title,\
+    cur = db.execute('select id,\
+                     title,\
                      postContents,\
                      postLink\
                      from posts\
@@ -72,11 +74,18 @@ def show_posts():
 @app.route('/add', methods=['POST'])
 def add_post():
     db = get_db()
-    post_id = '3x3x3z'
     post_date = str(datetime.datetime.now())
-    db.execute('insert into posts (id, title, postContents, postDate)\
-               values (?, ?, ?, ?)',
-               [post_id, request.form['title'], request.form['text'], post_date])
-    db.commit()
-    flash('new post was successfully posted')
-    return redirect(url_for('show_posts'))
+    if(request.form['title'] is not "" and request.form["text"] is not ""):
+        db.execute('insert into posts (title, postLink, postContents, postDate)\
+                   values (?, ?, ?, ?)',
+                   [request.form['title'], request.form['link'],
+                    request.form['text'], post_date])
+        db.commit()
+        flash('new post was successfully posted')
+        return redirect(url_for('show_posts'))
+    else:
+        if(request.form['title'] is ""):
+            flash("A title is required")
+        if(request.form['text'] is ""):
+            flash("Your post is empty")
+        return redirect(url_for('show_posts'))
