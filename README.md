@@ -8,7 +8,11 @@ Requirements:
 How to install:
 
 Run 
+
     pip install --editable .
+    
     export FLASK_APP="app name"
+    
     flask initdb
+    
     flask run
