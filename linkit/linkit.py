@@ -13,6 +13,7 @@ website_name = 'linkit'
 app = Flask(__name__)
 app.config.from_object(__name__)
 
+"""This definitely needs updating later"""
 app.config.update(dict(
     DATABASE=os.path.join(app.root_path, website_name),
     SECRET_KEY='development key',
